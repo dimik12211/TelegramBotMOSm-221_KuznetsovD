@@ -1,0 +1,33 @@
+p{
+    margin: 5px 0px;
+    padding: 0;
+    width: 300px;
+    font-size: 14px;
+}
+#divAdd1{
+    width: 100%;
+    text-align: center;
+}
+.divAdd3{
+    display: inline-block;
+}
+#divAdd3_but{
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: 1px solid #000;
+}
+.td_input_width_id{
+    width: 20px;
+}
+.td_input_width_1{
+    width: 230px;
+}
+.td_input_width_2{
+    width: 100px;
+}
+.td_input_width_3{
+    width: 90px;
+}
+.td_input_width_4{
+    width: 70px;
+}

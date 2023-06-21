@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workout</title>
+    <link th:href="@{Workout.css}" rel="stylesheet" type="text/css">
+    <style>
+        td {
+            text-align: start;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: solid black 1px;
+            padding: 3px;
+        }
+
+        th {
+            background: #b0e0e6;
+        }
+    </style>
+</head>
+<body>
+<div id="divAdd1">
+    <div id="divAdd2">
+        <form method="post">
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Название упражнения
+                    </p>
+                </div>
+                <input type="text" name="exerciseName" style="font-size: 10px; width: 166px;">
+            </div>
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Название группы мышцы
+                    </p>
+                </div>
+                <input type="text" name="muscleName" style="font-size: 10px; width: 166px;">
+            </div>
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Рекомендуемое время для выполнения
+                    </p>
+                </div>
+                <input type="text" name="recommendedExecutionTime" style="font-size: 10px; width: 166px;">
+            </div>
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Количество повторений
+                    </p>
+                </div>
+                <input type="text" name="numberOfRepetitions" style="font-size: 10px; width: 166px;">
+            </div>
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Количество подходов
+                    </p>
+                </div>
+                <input type="text" name="numberOfApproaches" style="font-size: 10px; width: 166px;">
+            </div>
+            <div class="add1">
+                <div class="divAdd3">
+                    <p>
+                        Описание
+                    </p>
+                </div>
+                <textarea style="width: 168px; resize: vertical; font-size: 10px" name="description"></textarea>
+            </div>
+            <div id="divAdd3_but">
+                <input type="submit" name="add">
+            </div>
+        </form>
+    </div>
+</div>
+<div style="width: 100%; text-align: center; margin-top: 100px">
+    <div style="display: inline-block;">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Название упражнения</th>
+                <th>Название группы мышцы</th>
+                <th>Рекомендуемое время для выполнения</th>
+                <th>Описание</th>
+                <th>Количество повторений</th>
+                <th>Количество подходов</th>
+            </tr>
+            <tr th:each="workout : ${tableWorkout}">
+                <form method="post">
+                    <td class="td_input_width_id"><input name="id" type="text" class="td_input_width_id"
+                                                         th:value="${workout.id}" style="text-align: center"></td>
+                    <td class="td_input_width_1"><input name="exerciseName" type="text" class="td_input_width_1"
+                                                        th:value="${workout.exerciseName}" style="text-align: center">
+                    </td>
+                    <td class="td_input_width_3"><input name="muscleName" type="text" class="td_input_width_3"
+                                                        th:value="${workout.muscleName}" style="text-align: center">
+                    </td>
+                    <td class="td_input_width_2"><input name="recommendedExecutionTime" type="text"
+                                                        class="td_input_width_2"
+                                                        th:value="${workout.recommendedExecutionTime}"
+                                                        style="text-align: center"></td>
+                    <td class="td_input_width_4"><textarea name="description" type="text" class="td_input_width_1"
+                                                           th:text="${workout.description}"
+                                                           style="height: 45px"></textarea></td>
+                    <td class="td_input_width_4"><input name="numberOfRepetitions" type="text" class="td_input_width_4"
+                                                        th:value="${workout.numberOfRepetitions}" style="text-align: center">
+                    </td>
+                    <td class="td_input_width_4"><input name="numberOfApproaches" type="text" class="td_input_width_4"
+                                                        th:value="${workout.numberOfApproaches}" style="text-align: center">
+                    </td>
+                    <td><input type="submit" name="update" value="Обновить"></td>
+                </form>
+                <form method="post" th:action="@{/(id=${workout.id})}">
+                    <td><input type="submit" name="delete" value="Удалить"></td>
+                </form>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
